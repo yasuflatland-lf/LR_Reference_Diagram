@@ -14,7 +14,7 @@ from diagrams.generic.compute import Rack
 from diagrams.onprem.vcs import Github
 from diagrams.aws.network import ALB
 from diagrams.aws.compute import EC2
-from diagrams.aws.database import RDSMysqlInstance
+from diagrams.aws.database import RDSPostgresqlInstance 
 from diagrams.aws.management import Cloudwatch
 from diagrams.aws.storage import S3, Backup
 from diagrams.aws.engagement  import SES
@@ -33,7 +33,7 @@ with Diagram("Liferay Reference Archtecture On-Prem",  filename="diagram", show=
             lrsvc = [EC2("Liferay Node1"), EC2("Liferay Node2")]
 
         with Cluster("Database Cluster"):
-            dbs = RDSMysqlInstance("Master and slave")
+            dbs = RDSPostgresqlInstance("Master and slave")
             lrsvc >> dbs >> metrics
 
         with Cluster("Elasticsearch Cluster"):
